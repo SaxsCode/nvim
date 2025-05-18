@@ -10,4 +10,7 @@ return {
       require('deploy').setup()
     end,
   },
+  {
+    { 'akinsho/toggleterm.nvim', version = '*', config = true },
+  },
 }
