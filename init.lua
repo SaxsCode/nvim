@@ -324,12 +324,12 @@ require('lazy').setup({
         --
         defaults = {
           file_ignore_patterns = {
-            "node_modules/.*",
-            "vendor/.*",
-          }
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
+            'node_modules/.*',
+            'vendor/.*',
+          },
+          --   mappings = {
+          --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+          --   },
         },
         -- pickers = {}
         extensions = {
@@ -638,26 +638,31 @@ require('lazy').setup({
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
-  require('mason-lspconfig').setup {
-    ensure_installed = { 'intelephense' },
-    automatic_installation = false,
-    handlers = {
-      function(server_name)
-        local server = servers[server_name] or {}
-        server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+      require('mason-lspconfig').setup {
+        ensure_installed = { 'intelephense' }, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
+        automatic_installation = false,
+        handlers = {
+          function(server_name)
+            local server = servers[server_name] or {}
+            -- This handles overriding only values explicitly passed
+            -- by the server configuration above. Useful when disabling
+            -- certain features of an LSP (for example, turning off formatting for ts_ls)
+            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+            if server_name == 'intelephense' then
+              server.settings = server.settings or {}
 
-        -- Inject settings for intelephense
-        if server_name == "intelephense" then
-          server.settings = server.settings or {}
-          server.settings.intelephense = server.settings.intelephense or {}
-          server.settings.intelephense.environment = server.settings.intelephense.environment or {}
-          server.settings.intelephense.environment.includePaths = { "C:/user/Documents/Projects/CMS-working", "C:/user/Documents/Projects/Frontend"  }
-        end
+              server.settings.intelephense = server.settings.intelephense or {}
 
-        require('lspconfig')[server_name].setup(server)
-      end,
-    },
-  }
+              server.settings.intelephense.environment = server.settings.intelephense.environment or {}
+
+              server.settings.intelephense.environment.includePaths = { 'C:/user/Documents/Projects/CMS-working', 'C:/user/Documents/Projects/Frontend' }
+            end
+            require('lspconfig')[server_name].setup(server)
+          end,
+        },
+      }
+    end,
+  },
 
   { -- Autoformat
     'stevearc/conform.nvim',
