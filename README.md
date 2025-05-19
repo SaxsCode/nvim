@@ -1,3 +1,12 @@
+# SAX VIM
+
+## todo
+
+* Fix deploy.nvim on windows env. / autodeploy on save
+* fix 'gd'
+* find a solution to configure external libraries
+* exclude vendor from telescope
+
 # kickstart.nvim
 
 ## Introduction
