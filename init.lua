@@ -655,7 +655,7 @@ require('lazy').setup({
 
               server.settings.intelephense.environment = server.settings.intelephense.environment or {}
 
-              server.settings.intelephense.environment.includePaths = { 'C:/user/Documents/Projects/CMS-working', 'C:/user/Documents/Projects/Frontend' }
+              server.settings.intelephense.environment.includePaths = { '/c/Projects/CMS2-working', 'c/Projects/Frontend-2' }
             end
             require('lspconfig')[server_name].setup(server)
           end,
