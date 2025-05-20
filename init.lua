@@ -322,11 +322,15 @@ require('lazy').setup({
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
+        defaults = {
+          file_ignore_patterns = {
+            'node_modules/.*',
+            'vendor/.*',
+          },
+          --   mappings = {
+          --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+          --   },
+        },
         -- pickers = {}
         extensions = {
           ['ui-select'] = {
@@ -644,6 +648,15 @@ require('lazy').setup({
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for ts_ls)
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+            if server_name == 'intelephense' then
+              server.settings = server.settings or {}
+
+              server.settings.intelephense = server.settings.intelephense or {}
+
+              server.settings.intelephense.environment = server.settings.intelephense.environment or {}
+
+              server.settings.intelephense.environment.includePaths = { 'C:/user/Documents/Projects/CMS-working', 'C:/user/Documents/Projects/Frontend' }
+            end
             require('lspconfig')[server_name].setup(server)
           end,
         },
