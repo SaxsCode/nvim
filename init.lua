@@ -627,18 +627,10 @@ require('lazy').setup({
 
   -- Colorscheme
   {
-    'catppuccin/nvim',
-    name = 'catppuccin',
-    priority = 1000,
+    'nyoom-engineering/oxocarbon.nvim',
     config = function()
-      require('catppuccin').setup {
-        flavour = 'mocha',
-        styles = {
-          comments = {},
-          conditionals = {},
-        },
-      }
-      vim.cmd.colorscheme 'catppuccin'
+      vim.opt.background = 'dark'
+      vim.cmd.colorscheme 'oxocarbon'
     end,
   },
 
