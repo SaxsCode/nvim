@@ -112,6 +112,12 @@ require('lazy').setup({
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     opts = {
       delay = 0,
+      icons = {
+        mappings = vim.g.have_nerd_font,
+        keys = {},
+      },
+
+      -- Document existing key chains
       spec = {
         { '<leader>s', group = '[S]earch' },
         { '<leader>t', group = '[T]oggle' },
@@ -635,6 +641,6 @@ require('lazy').setup({
   { import = 'custom.plugins' },
 }, {
   ui = {
-    icons = vim.g.have_nerd_font,
+    icons = {},
   },
 })
