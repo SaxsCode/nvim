@@ -77,15 +77,18 @@ vim.keymap.set('x', '<leader>p', '"_dP')
 vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- Fugitive mappings
-vim.keymap.set('n', '<C-;>;', ':Git ')
-vim.keymap.set('n', '<C-;>s', ':Git status<CR>')
-vim.keymap.set('n', '<C-;>a', ':Git add .<CR>')
-vim.keymap.set('n', '<C-;>A', ':Git add ')
-vim.keymap.set('n', '<C-;>c', ':Git commit -m ""<Left>')
-vim.keymap.set('n', '<C-;>p', ':Git push')
-vim.keymap.set('n', '<C-;>l', ':Git pull')
-vim.keymap.set('n', '<C-;>r', ':Git restore .<CR>')
-vim.keymap.set('n', '<C-;>R', ':Git restore ')
+vim.keymap.set('n', '<leader>;;', ':Git ')
+vim.keymap.set('n', '<leader>;s', ':Git status<CR>')
+vim.keymap.set('n', '<leader>;a', ':Git add .<CR>')
+vim.keymap.set('n', '<leader>;A', ':Git add ')
+vim.keymap.set('n', '<leader>;c', ':Git commit -m ""<Left>', { desc = ':Git commit -m ""' })
+vim.keymap.set('n', '<leader>;p', ':Git push<CR>')
+vim.keymap.set('n', '<leader>;l', ':Git pull<CR>')
+vim.keymap.set('n', '<leader>;r', ':Git restore .<CR>')
+vim.keymap.set('n', '<leader>;R', ':Git restore ')
+vim.keymap.set('n', '<leader>;o', ':Git checkout ')
+vim.keymap.set('n', '<leader>;b', ':Git branch ')
+vim.keymap.set('n', '<leader>;f', ':Git branch feature/')
 
 -- [[ Basic Autocommands ]]
 
@@ -131,6 +134,7 @@ require('lazy').setup({
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = '[H]arpoon' },
         { '<leader>g', group = '[G]it' },
+        { '<leader>;', group = '[;]Git Flow' },
       },
     },
   },
