@@ -89,6 +89,10 @@ vim.keymap.set('n', '<leader>;R', ':Git restore ')
 vim.keymap.set('n', '<leader>;o', ':Git checkout ')
 vim.keymap.set('n', '<leader>;b', ':Git branch ')
 vim.keymap.set('n', '<leader>;f', ':Git branch feature/')
+vim.keymap.set('n', '<leader>;M', ':Git merge ')
+vim.keymap.set('n', '<leader>;md', ':Git merge develop<CR>')
+vim.keymap.set('n', '<leader>;mm', ':Git merge master<CR>')
+vim.keymap.set('n', '<leader>;mf', ':Git merge feature/')
 
 -- [[ Basic Autocommands ]]
 
@@ -135,6 +139,7 @@ require('lazy').setup({
         { '<leader>h', group = '[H]arpoon' },
         { '<leader>g', group = '[G]it' },
         { '<leader>;', group = '[;]Git Flow' },
+        { '<leader>;m', group = '[m]Git merge' },
       },
     },
   },
