@@ -76,6 +76,17 @@ vim.keymap.set('x', '<leader>p', '"_dP')
 -- Replace current word in file
 vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
+-- Fugitive mappings
+vim.keymap.set('n', '<C-;>;', ':Git ')
+vim.keymap.set('n', '<C-;>s', ':Git status<CR>')
+vim.keymap.set('n', '<C-;>a', ':Git add .<CR>')
+vim.keymap.set('n', '<C-;>A', ':Git add ')
+vim.keymap.set('n', '<C-;>c', ':Git commit -m ""<Left>')
+vim.keymap.set('n', '<C-;>p', ':Git push')
+vim.keymap.set('n', '<C-;>l', ':Git pull')
+vim.keymap.set('n', '<C-;>r', ':Git restore .<CR>')
+vim.keymap.set('n', '<C-;>R', ':Git restore ')
+
 -- [[ Basic Autocommands ]]
 
 -- Highlight when yanking (copying) text
