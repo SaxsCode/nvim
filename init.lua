@@ -57,7 +57,7 @@ vim.o.confirm = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>d', vim.diagnostic.setloclist, { desc = 'Open [D]iagnostic quickfix list' })
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -75,6 +75,10 @@ vim.keymap.set('x', '<leader>p', '"_dP')
 
 -- Replace current word in file
 vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- Better save
+vim.keymap.set('n', '<leader>w', ':up<CR>', { desc = 'Save' })
+vim.keymap.set('n', '<leader>q', ':q<CR>', { desc = 'Quit' })
 
 -- Fugitive mappings
 vim.keymap.set('n', '<leader>;;', ':Git ')
@@ -139,7 +143,7 @@ require('lazy').setup({
         { '<leader>h', group = '[H]arpoon' },
         { '<leader>g', group = '[G]it' },
         { '<leader>;', group = '[;]Git Flow' },
-        { '<leader>;m', group = '[m]Git merge' },
+        { '<leader>;m', group = '[m]Git Flow' },
       },
     },
   },
