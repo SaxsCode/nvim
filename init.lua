@@ -79,6 +79,7 @@ vim.keymap.set('n', '<leader>r', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 -- Better save
 vim.keymap.set('n', '<leader>w', ':up<CR>', { desc = 'Save' })
 vim.keymap.set('n', '<leader>q', ':q<CR>', { desc = 'Quit' })
+vim.keymap.set('n', '<leader>z', ':Lazy<CR>', { desc = 'Lazy' })
 
 -- Fugitive mappings
 vim.keymap.set('n', '<leader>;;', ':Git ')
@@ -144,6 +145,7 @@ require('lazy').setup({
         { '<leader>g', group = '[G]it' },
         { '<leader>;', group = '[;]Git Flow' },
         { '<leader>;m', group = '[m]Git Flow' },
+        { '<leader>a', group = '[A]round' },
       },
     },
   },
@@ -680,13 +682,13 @@ require('lazy').setup({
 
       require('mini.surround').setup {
         mappings = {
-          add = 'ys', -- Add surrounding in Normal and Visual modes
-          delete = 'ds', -- Delete surrounding
-          find = 'fs', -- Find surrounding (to the right)
-          find_left = 'fS', -- Find surrounding (to the left)
-          highlight = 'hs', -- Highlight surrounding
-          replace = 'cs', -- Replace surrounding
-          update_n_lines = 'ns', -- Update `n_lines`
+          add = '<leader>ay',
+          delete = '<leader>ad',
+          find = '<leader>af',
+          find_left = '<leader>aF',
+          highlight = '<leader>ah',
+          replace = '<leader>ac',
+          update_n_lines = '<leader>an',
         },
       }
     end,
