@@ -74,7 +74,7 @@ vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 vim.keymap.set('x', '<leader>p', '"_dP')
 
 -- Replace current word in file
-vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set('n', '<leader>r', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Replace current word' })
 
 -- Better save
 vim.keymap.set('n', '<leader>w', ':up<CR>', { desc = 'Save' })
@@ -216,6 +216,63 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
+
+      local pickers = require 'telescope.pickers'
+      local finders = require 'telescope.finders'
+      local conf = require('telescope.config').values
+
+      local pickers = require 'telescope.pickers'
+      local finders = require 'telescope.finders'
+      local conf = require('telescope.config').values
+      local actions = require 'telescope.actions'
+      local action_state = require 'telescope.actions.state'
+
+      -- Switch projects
+      local pickers = require 'telescope.pickers'
+      local finders = require 'telescope.finders'
+      local conf = require('telescope.config').values
+      local actions = require 'telescope.actions'
+      local action_state = require 'telescope.actions.state'
+
+      vim.keymap.set('n', '<leader>sp', function()
+        local projects_dir = vim.env.PROJECTS_DIR or 'C:\\Projects'
+        local scan = require 'plenary.scandir'
+        local dirs = scan.scan_dir(projects_dir, { only_dirs = true, depth = 1 })
+
+        -- Prepare display names and full paths
+        local entries = {}
+        for _, dir in ipairs(dirs) do
+          local normalized = dir:gsub('\\', '/')
+          local name = normalized:match '([^/]+)/?$'
+          table.insert(entries, { display = name, value = dir })
+        end
+
+        pickers
+          .new({}, {
+            prompt_title = 'Switch Project',
+            finder = finders.new_table {
+              results = entries,
+              entry_maker = function(entry)
+                return {
+                  value = entry.value,
+                  display = entry.display,
+                  ordinal = entry.display,
+                }
+              end,
+            },
+            sorter = conf.generic_sorter {},
+            attach_mappings = function(prompt_bufnr, map)
+              actions.select_default:replace(function()
+                local selection = action_state.get_selected_entry()
+                actions.close(prompt_bufnr)
+                vim.cmd('cd ' .. vim.fn.fnameescape(selection.value))
+                print('Switched to project: ' .. selection.display)
+              end)
+              return true
+            end,
+          })
+          :find()
+      end, { desc = '[S]witch [P]roject' })
     end,
   },
 
