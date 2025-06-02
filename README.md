@@ -2,12 +2,8 @@
 
 ## todo
 
-* Fix deploy.nvim on windows env. / autodeploy on save
-* fix 'gd'
-* colorscheme
-* prevent unnesacary diagnastics
-* match tab indenting
-* update readme
+* Fix PHP language to find references etc.
+* Fix issues where variables from included projects are not recgonized
 
 ## Description
 
