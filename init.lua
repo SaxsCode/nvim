@@ -665,10 +665,19 @@ require('lazy').setup({
 
   -- Colorscheme
   {
-    'nyoom-engineering/oxocarbon.nvim',
-    config = function()
-      vim.opt.background = 'dark'
-      vim.cmd.colorscheme 'oxocarbon'
+    'f4z3r/gruvbox-material.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {
+      italics = true,
+      contrast = 'hard',
+      signs = {
+        highlight = true,
+      },
+    },
+    config = function(_, opts)
+      require('gruvbox-material').setup(opts)
+      vim.cmd.colorscheme 'gruvbox-material'
     end,
   },
 

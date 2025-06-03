@@ -8,6 +8,7 @@ return {
       },
       sections = {
         lualine_b = { 'branch', 'diff' },
+        lualine_c = { { 'filename', path = 1 } },
         lualine_x = {},
         lualine_y = { 'filetype' },
       },
