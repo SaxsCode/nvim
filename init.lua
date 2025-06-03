@@ -67,7 +67,7 @@ vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 vim.keymap.set('x', '<leader>p', '"_dP')
 
 -- Replace current word in file
-vim.keymap.set('n', '<leader>r', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Replace current word' })
+vim.keymap.set('n', '<leader>R', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Replace current word' })
 
 -- Better save
 vim.keymap.set('n', '<leader>w', ':up<CR>', { desc = 'Save' })
@@ -139,6 +139,7 @@ require('lazy').setup({
         { '<leader>;', group = '[;]Git Flow' },
         { '<leader>;m', group = '[m]Git Flow' },
         { '<leader>a', group = '[A]round' },
+        { '<leader>r', group = '[R]efactor' },
       },
     },
   },
