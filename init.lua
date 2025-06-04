@@ -545,7 +545,7 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        php = { 'pint', "php_cs_fixer" },
+        php = { 'pint', 'php_cs_fixer' },
       },
     },
   },
@@ -652,7 +652,7 @@ require('lazy').setup({
       },
     },
     config = function(_, opts)
-	    require('gruvbox-material').setup(opts)
+      require('gruvbox-material').setup(opts)
       vim.cmd.colorscheme 'gruvbox-material'
     end,
   },
@@ -694,7 +694,6 @@ require('lazy').setup({
     -- TODO: Should definitly check out:
 
     --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-    --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
 
