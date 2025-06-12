@@ -405,7 +405,15 @@ require('lazy').setup({
           },
         },
       }
-      -- Enable the following language servers
+
+      require('lspconfig').ts_ls.setup {
+        filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+      }
+
+      -- Tailwind CSS
+      require('lspconfig').tailwindcss.setup {}
+
+      -- Enable the following language server
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
       --
       --  Add any additional override configuration in the following tables. Available keys are:
@@ -493,9 +501,6 @@ require('lazy').setup({
     opts = {
       notify_on_error = false,
       format_on_save = function(bufnr)
-        -- Disable "format_on_save lsp_fallback" for languages that don't
-        -- have a well standardized coding style. You can add additional
-        -- languages here or re-enable it for the disabled ones.
         local disable_filetypes = { c = true, cpp = true }
         if disable_filetypes[vim.bo[bufnr].filetype] then
           return nil
@@ -509,6 +514,11 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         php = { 'pint', 'php_cs_fixer' },
+        javascript = { 'prettier' },
+        javascriptreact = { 'prettier' },
+        css = { 'prettier' },
+        html = { 'prettier' },
+        json = { 'prettier' },
       },
     },
   },
