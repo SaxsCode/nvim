@@ -78,19 +78,16 @@ vim.keymap.set('n', '<leader>q', ':q<CR>', { desc = 'Quit' })
 vim.keymap.set('n', '<leader>z', ':Lazy<CR>', { desc = 'Lazy' })
 
 -- Fugitive mappings
-vim.keymap.set('n', '<leader>g;', ':Git<CR>')
-vim.keymap.set('n', '<leader>gs', ':Git status<CR>')
-vim.keymap.set('n', '<leader>ga', ':Git add .<CR>')
-vim.keymap.set('n', '<leader>gA', ':Git add ')
-vim.keymap.set('n', '<leader>gc', ':Git commit -m ""<Left>', { desc = ':Git commit -m ""' })
+vim.keymap.set('n', '<leader>gg', ':Git<CR>')
 vim.keymap.set('n', '<leader>gp', ':Git push<CR>')
 vim.keymap.set('n', '<leader>gl', ':Git pull<CR>')
 vim.keymap.set('n', '<leader>gr', ':Git restore .<CR>')
-vim.keymap.set('n', '<leader>gR', ':Git restore ')
-vim.keymap.set('n', '<leader>go', ':Git checkout ')
-vim.keymap.set('n', '<leader>gb', ':Git branch ')
-vim.keymap.set('n', '<leader>gf', ':Git branch feature/')
-vim.keymap.set('n', '<leader>gM', ':Git merge ')
+vim.keymap.set('n', '<leader>gb', ':Git branch feature/')
+
+vim.keymap.set('n', '<leader>god', ':Git checkout develop<CR>')
+vim.keymap.set('n', '<leader>gom', ':Git checkout master<CR>')
+vim.keymap.set('n', '<leader>gof', ':Git checkout feature/')
+
 vim.keymap.set('n', '<leader>gmd', ':Git merge develop<CR>')
 vim.keymap.set('n', '<leader>gmm', ':Git merge master<CR>')
 vim.keymap.set('n', '<leader>gmf', ':Git merge feature/')
@@ -135,7 +132,7 @@ require('lazy').setup({
         { '<leader>s', group = '[S]earch' },
         { '<leader>h', group = '[H]arpoon' },
         { '<leader>g', group = '[G]it' },
-        { '<leader>gg', group = '[G]itsigns' },
+        { '<leader>go', group = '[G]it Check[O]ut' },
         { '<leader>gm', group = '[G]it [M]erge' },
         { '<leader>a', group = '[A]round' },
         { '<leader>r', group = '[R]efactor' },
