@@ -92,6 +92,9 @@ vim.keymap.set('n', '<leader>gmd', ':Git merge develop<CR>')
 vim.keymap.set('n', '<leader>gmm', ':Git merge master<CR>')
 vim.keymap.set('n', '<leader>gmf', ':Git merge feature/')
 
+-- Swittch tabs
+vim.keymap.set('n', '<Tab>', '<C-w>w', { noremap = true, silent = true })
+
 -- [[ Basic Autocommands ]]
 
 -- Highlight when yanking (copying) text
