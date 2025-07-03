@@ -2,10 +2,8 @@
 
 ## todo
 
-* Fix PHP language to find references etc.
-* Fix issues where variables from included projects are not recgonized
+* Going to reference opens complete path, breaking windows-sync
+* Fix undotree, does not work rn
+* find something better for nvim notify
+* eventualy replace neotree with something like oil
 
-## Description
-
-First actual neovim configuration setup using kickstarter.nvim
-Work in progress... 
