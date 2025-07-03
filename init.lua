@@ -92,6 +92,10 @@ vim.keymap.set('n', '<leader>gmd', ':Git merge develop<CR>')
 vim.keymap.set('n', '<leader>gmm', ':Git merge master<CR>')
 vim.keymap.set('n', '<leader>gmf', ':Git merge feature/')
 
+-- Terminal flow
+vim.keymap.set('n', '<leader>tn', ':silent !start wt<CR>', { desc = 'Open new terminal'})
+vim.keymap.set('n', '<leader>tt', ':silent !start wt -d "%:p:h"<CR>', { desc = 'Open new terminal within directory'})
+
 -- Swittch tabs
 vim.keymap.set('n', '<Tab>', '<C-w>w', { noremap = true, silent = true })
 
@@ -134,6 +138,7 @@ require('lazy').setup({
       spec = {
         { '<leader>s', group = '[S]earch' },
         { '<leader>h', group = '[H]arpoon' },
+        { '<leader>t', group = '[T]erminal' },
         { '<leader>g', group = '[G]it' },
         { '<leader>go', group = '[G]it Check[O]ut' },
         { '<leader>gm', group = '[G]it [M]erge' },
@@ -581,18 +586,3 @@ require('lazy').setup({
     icons = {},
   },
 })
-
--- Open compiler
-vim.api.nvim_set_keymap('n', '<F6>', '<cmd>CompilerOpen<cr>', { noremap = true, silent = true })
-
--- Redo last selected option
-vim.api.nvim_set_keymap(
-  'n',
-  '<F7>',
-  '<cmd>CompilerStop<cr>' -- (Optional, to dispose all tasks before redo)
-    .. '<cmd>CompilerRedo<cr>',
-  { noremap = true, silent = true }
-)
-
--- Toggle compiler results
-vim.api.nvim_set_keymap('n', '<F8>', '<cmd>CompilerToggleResults<cr>', { noremap = true, silent = true })
