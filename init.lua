@@ -377,7 +377,7 @@ require('lazy').setup({
                 braces = 'k&r',
               },
               environment = {
-                includePaths = { 'C:/Projects/CMS2-working', 'C:/2018/Frontend-2' },
+                includePaths = { 'C:/Projects/CMS2-working', 'C:/Projects/Frontend-2' },
               },
             },
           },
@@ -415,15 +415,6 @@ require('lazy').setup({
           function(server_name)
             local server = servers[server_name] or {}
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            if server_name == 'intelephense' then
-              server.settings = server.settings or {}
-
-              server.settings.intelephense = server.settings.intelephense or {}
-
-              server.settings.intelephense.environment = server.settings.intelephense.environment or {}
-
-              server.settings.intelephense.environment.includePaths = { 'C:/Projects/CMS2-working', 'C:/Projects/Frontend-2' }
-            end
             require('lspconfig')[server_name].setup(server)
           end,
         },
