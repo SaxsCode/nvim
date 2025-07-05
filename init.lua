@@ -95,6 +95,7 @@ vim.keymap.set('n', '<leader>gmf', ':Git merge feature/')
 -- Terminal flow
 vim.keymap.set('n', '<leader>tn', ':silent !start wt<CR>', { desc = 'Open new terminal'})
 vim.keymap.set('n', '<leader>tt', ':silent !start wt -d "%:p:h"<CR>', { desc = 'Open new terminal within directory'})
+vim.keymap.set('n', '<leader>to', ':silent !start wt -d "%:p:h" nvim .<CR>', { desc = 'Open new terminal and run oil' })
 
 -- Swittch tabs
 vim.keymap.set('n', '<Tab>', '<C-w>w', { noremap = true, silent = true })
