@@ -177,6 +177,7 @@ require('lazy').setup({
             require('telescope.themes').get_dropdown(),
           },
         },
+        hidden = true
       }
 
       -- Enable Telescope extensions if they are installed
@@ -218,19 +219,10 @@ require('lazy').setup({
       local finders = require 'telescope.finders'
       local conf = require('telescope.config').values
 
-      local pickers = require 'telescope.pickers'
-      local finders = require 'telescope.finders'
-      local conf = require('telescope.config').values
       local actions = require 'telescope.actions'
       local action_state = require 'telescope.actions.state'
 
       -- Switch projects
-      local pickers = require 'telescope.pickers'
-      local finders = require 'telescope.finders'
-      local conf = require('telescope.config').values
-      local actions = require 'telescope.actions'
-      local action_state = require 'telescope.actions.state'
-
       vim.keymap.set('n', '<leader>sp', function()
         local projects_dir = vim.env.PROJECTS_DIR or 'C:\\Projects'
         local scan = require 'plenary.scandir'
