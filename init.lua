@@ -515,7 +515,7 @@ require('lazy').setup({
       italics = true,
       contrast = 'hard',
       signs = {
-        highlight = true,
+        force_background = true,
       },
     },
     config = function(_, opts)
