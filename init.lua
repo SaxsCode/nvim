@@ -92,6 +92,9 @@ vim.keymap.set('n', '<leader>gmd', ':Git merge develop<CR>')
 vim.keymap.set('n', '<leader>gmm', ':Git merge master<CR>')
 vim.keymap.set('n', '<leader>gmf', ':Git merge feature/')
 
+-- Oil
+vim.keymap.set('n', '-', ':Oil<CR>', { desc = 'Open Oil'})
+
 -- Terminal flow
 vim.keymap.set('n', '<leader>tn', ':silent !start wt<CR>', { desc = 'Open new terminal'})
 vim.keymap.set('n', '<leader>tt', ':silent !start wt -d "%:p:h"<CR>', { desc = 'Open new terminal within directory'})
