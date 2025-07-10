@@ -81,7 +81,7 @@ vim.keymap.set('n', '<leader>z', ':Lazy<CR>', { desc = 'Lazy' })
 vim.keymap.set('n', '<leader>gg', ':Git<CR>')
 vim.keymap.set('n', '<leader>gp', ':Git push<CR>')
 vim.keymap.set('n', '<leader>gl', ':Git pull<CR>')
-vim.keymap.set('n', '<leader>gr', ':Git restore .<CR>')
+vim.keymap.set('n', '<leader>gr', ':Git restore .')
 vim.keymap.set('n', '<leader>gb', ':Git branch feature/')
 
 vim.keymap.set('n', '<leader>god', ':Git checkout develop<CR>')
