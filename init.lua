@@ -520,6 +520,9 @@ require('lazy').setup({
       signs = {
         force_background = true,
       },
+      background = {
+          transparent = true,
+      },
     },
     config = function(_, opts)
       require('gruvbox-material').setup(opts)
