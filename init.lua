@@ -43,7 +43,7 @@ vim.o.timeoutlen = 300
 vim.o.splitright = true
 vim.o.splitbelow = true
 
-vim.opt.termguicolors = false
+vim.opt.termguicolors = true
 
 vim.o.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
@@ -93,11 +93,11 @@ vim.keymap.set('n', '<leader>gmm', ':Git merge master<CR>')
 vim.keymap.set('n', '<leader>gmf', ':Git merge feature/')
 
 -- Oil
-vim.keymap.set('n', '-', ':Oil<CR>', { desc = 'Open Oil'})
+vim.keymap.set('n', '-', ':Oil<CR>', { desc = 'Open Oil' })
 
 -- Terminal flow
-vim.keymap.set('n', '<leader>tn', ':silent !start wt<CR>', { desc = 'Open new terminal'})
-vim.keymap.set('n', '<leader>tt', ':silent !start wt -d "%:p:h"<CR>', { desc = 'Open new terminal within directory'})
+vim.keymap.set('n', '<leader>tn', ':silent !start wt<CR>', { desc = 'Open new terminal' })
+vim.keymap.set('n', '<leader>tt', ':silent !start wt -d "%:p:h"<CR>', { desc = 'Open new terminal within directory' })
 vim.keymap.set('n', '<leader>to', ':silent !start wt -d "%:p:h" nvim .<CR>', { desc = 'Open new terminal and run oil' })
 
 -- Swittch tabs
@@ -180,7 +180,7 @@ require('lazy').setup({
             require('telescope.themes').get_dropdown(),
           },
         },
-        hidden = true
+        hidden = true,
       }
 
       -- Enable Telescope extensions if they are installed
@@ -395,25 +395,21 @@ require('lazy').setup({
       }
 
       for server, config in pairs(servers) do
-        require('lspconfig')[server].setup(config)
+        vim.lsp.config(server, config)
+        vim.lsp.enable(server)
       end
 
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua',
       })
-      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
+      local ensure_installed = vim.tbl_keys(servers or {})
+      vim.list_extend(ensure_installed, { 'stylua' })
+      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
       require('mason-lspconfig').setup {
-        ensure_installed = { }, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
+        ensure_installed = {},
         automatic_installation = false,
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
-          end,
-        },
       }
     end,
   },
@@ -511,22 +507,12 @@ require('lazy').setup({
 
   -- Colorscheme
   {
-    'f4z3r/gruvbox-material.nvim',
+    'vague-theme/vague.nvim',
     lazy = false,
     priority = 1000,
-    opts = {
-      italics = true,
-      contrast = 'hard',
-      signs = {
-        force_background = true,
-      },
-      background = {
-          transparent = true,
-      },
-    },
-    config = function(_, opts)
-      require('gruvbox-material').setup(opts)
-      vim.cmd.colorscheme 'gruvbox-material'
+    config = function()
+      require('vague').setup {}
+      vim.cmd 'colorscheme vague'
     end,
   },
 
