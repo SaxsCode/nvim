@@ -103,6 +103,12 @@ vim.keymap.set('n', '<leader>to', ':silent !start wt -d "%:p:h" nvim .<CR>', { d
 -- Swittch tabs
 vim.keymap.set('n', '<Tab>', '<C-w>w', { noremap = true, silent = true })
 
+vim.filetype.add({
+  extension = {
+    ['html'] = 'php', -- Force .html files to be treated as php
+  },
+})
+
 -- [[ Basic Autocommands ]]
 
 -- Highlight when yanking (copying) text
